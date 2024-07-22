@@ -1,6 +1,31 @@
+import React from 'react';
+
+// Määritellään Header komponentti 
+
+const Header = ({course}) => {
+  return <h1>{course}</h1>
+}
+
+// Määritellään Content komponentti
+const Content = ({parts})=>{
+  return 
+    <div>
+      {parts.map(part, index) =>
+        <p key={index}
+        
+        ></p>
+      
+      
+      }
+      </div>
+}
+
+// Määritellään numbers komponentti
+
+
 const App =  () =>{
   const course = 'Half Stack application development'
-  const part1 = 'Fundamentals of react'¨
+  const part1 = 'Fundamentals of react'
   const exercises1 = 10
   const part2 = 'Using props to pass data'
   const exercises2 = 7
@@ -9,7 +34,7 @@ const App =  () =>{
 
   return(
     <div>
-      <h1>{course}</h1>
+      <Header course={course}/>
       <p>
         {part1} {exercises1}
       </p>
@@ -26,3 +51,5 @@ const App =  () =>{
   )
 
 }
+
+export default App;
