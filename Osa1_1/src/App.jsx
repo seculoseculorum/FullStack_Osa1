@@ -1,55 +1,58 @@
 import React from 'react';
 
-// Määritellään Header komponentti 
+/*
+Refaktoroitu koodi. 
+*/
 
-const Header = ({course}) => {
-  return <h1>{course}</h1>
-}
 
-// Määritellään Content komponentti
-const Content = ({parts})=>{
-  return 
+const Header = ({ course }) => {
+  //Hakee kurssin nimen APPistä 
+  return <h1>{course}</h1>;
+};
+
+const Part = ({ part, exercises }) => {
+  //Haetaan osa (part) ja harjoitteet (exercises) */}
+  return (
+    <p>
+      {part} {exercises}
+    </p>
+  );
+};
+
+const Content = ({ parts }) => {
+  //Hakee sisällön osat
+  return (
     <div>
-      {parts.map(part, index) =>
-        <p key={index}
-        
-        ></p>
-      
-      
-      }
-      </div>
-}
-
-// Määritellään numbers komponentti
-
-
-const App =  () =>{
-  const course = 'Half Stack application development'
-  const part1 = 'Fundamentals of react'
-  const exercises1 = 10
-  const part2 = 'Using props to pass data'
-  const exercises2 = 7
-  const part3 = 'State of a component'
-  const exercises3 = 14
-
-  return(
-    <div>
-      <Header course={course}/>
-      <p>
-        {part1} {exercises1}
-      </p>
-      <p>
-        {part2} {exercises2}
-      </p>
-      <p>
-        {part3} {exercises3}
-      </p>
-      <p>Number of exercises {exercises1 + exercises2 + exercises3}</p>
-
-
+      {parts.map((part, index) => (
+        <Part key={index} part={part.name} exercises={part.exercises} />
+      ))}
     </div>
-  )
+  );
+};
 
-}
+const Total = ({ total }) => {
+  //Total hakee määrän harjoitteita
+  return <p>Number of exercises {total}</p>;
+};
+
+const App = () => {
+  //Sisällöt vedään komponentteihin
+  const course = 'Half Stack application development';
+  const parts = [
+    { name: 'Fundamentals of React', exercises: 10 },
+    { name: 'Using props to pass data', exercises: 7 },
+    { name: 'State of a component', exercises: 14 },
+  ];
+
+  const totalExercises = parts.reduce((sum, part) => sum + part.exercises, 0);
+
+  return (
+    <div>
+      <Header course={course} />
+      <Content parts={parts} />
+      <Total total={totalExercises} />
+    </div>
+  );
+};
 
 export default App;
