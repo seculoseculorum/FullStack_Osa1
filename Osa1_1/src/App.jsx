@@ -36,14 +36,14 @@ const Total = ({ total }) => {
 };
 
 const App = () => {
-  //Sisällöt vedään komponentteihin
+  //Sisällöt vidään komponentteihin
   const course = 'Half Stack application development';
   const parts = [
     { name: 'Fundamentals of React', exercises: 10 },
     { name: 'Using props to pass data', exercises: 7 },
     { name: 'State of a component', exercises: 14 },
   ];
-
+  // Lasketaan harjoitteiden kokonaismäärä
   const totalExercises = parts.reduce((sum, part) => sum + part.exercises, 0);
 
   return (
